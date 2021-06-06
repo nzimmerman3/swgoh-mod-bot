@@ -58,12 +58,11 @@ client.on("message", async message => {
   var newScore = ((fifteen * .5) / (gp / 100000)) + ((twenty * 1.5) / (gp / 100000)) + ((twentyfive * 2) / (gp / 100000))
   const mess = new MessageEmbed()
     .setColor('#0099ff')
-    .setTitle('Mod Report')
+    .setTitle(name + '\'s Mod Report')
     .addFields(
       { name: 'Mod Score', value: oldScore.toFixed(2), inline: true },
       { name: 'Nick\'s Score', value: newScore.toFixed(2), inline: true }
     )
-  // message.channel.send(`Mod Score: ${oldScore.toFixed(2)}\nNew Mod Score: ${newScore.toFixed(2)}`);
   message.channel.send(mess)
   }
 })
