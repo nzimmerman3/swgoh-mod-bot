@@ -55,17 +55,17 @@ client.on("message", async message => {
     mods.push([primary, speed])
   })
   var oldScore = (fifteen) / (gp / 100000)
-  var newScore = (fifteen) / (gp / 100000) + (twenty) / (gp / 100000) + (twentyfive) / (gp / 100000)
-  console.log(oldScore)
-  console.log(newScore)
-  message.channel.send(oldScore)
-  message.channel.send(newScore)
+  var newScore = ((fifteen * .5) / (gp / 100000)) + ((twenty * 1.5) / (gp / 100000)) + ((twentyfive * 2) / (gp / 100000))
+  const mess = new MessageEmbed()
+    .setColor('#0099ff')
+    .setTitle('Mod Report')
+    .addFields(
+      { name: 'Mod Score', value: oldScore.toFixed(2), inline: true },
+      { name: 'Nick\'s Score', value: newScore.toFixed(2), inline: true }
+    )
+  // message.channel.send(`Mod Score: ${oldScore.toFixed(2)}\nNew Mod Score: ${newScore.toFixed(2)}`);
+  message.channel.send(mess)
   }
-
-  if (command === 'cat') {
-		const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
-		message.channel.send(file);
-	}
 })
 
 keepAlive();
